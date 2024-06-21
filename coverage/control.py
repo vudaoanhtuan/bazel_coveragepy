@@ -732,6 +732,11 @@ class Coverage:
         """Save the collected coverage data to the data file."""
         data = self.get_data()
         data.write()
+        self.lcov_report(
+            morfs=[],
+            outfile=os.environ.get('PYTHON_LCOV_FILE'),
+            ignore_errors=True
+        )
 
     def _make_aliases(self):
         """Create a PathAliases from our configuration."""
